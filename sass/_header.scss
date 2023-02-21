@@ -1,0 +1,73 @@
+@use "variables";
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: variables.$primary__color;
+}
+
+.header__container {
+  width: 1200px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo__container {
+  display: flex;
+  justify-content: start;
+  width: 20%;
+
+  p {
+    color: variables.$text__color;
+    font-size: 2rem;
+  }
+}
+
+.header__nav__container {
+  width: 100%;
+
+  .header__navbar {
+    ul {
+      display: flex;
+      justify-content: start;
+
+      li {
+        color: variables.$text__color;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+          color: variables.$tertiary__color;
+        }
+        
+      }
+    }
+  }
+}
+
+.header__button__container {
+  display: flex;
+  justify-content: end;
+  align-items:center;
+  width: 25%;
+
+  .header__button {
+    padding: 8px 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    color: variables.$text__color;
+    border-radius: 8px;
+    border: none;
+    background-color: variables.$tertiary__color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: variables.$contrast__color;
+    }
+  }
+}
