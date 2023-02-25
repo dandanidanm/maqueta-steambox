@@ -1,70 +1,61 @@
 @use "variables";
 
+@mixin media-query($media: 480px) {
+  
+  @media screen and (max-width: $media) {
+      @content;
+   
+  }
+}
+
 .footer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: variables.$primary__color;
-  height: 250px;
+  height: 70px;
   color: white;
-}
+  width: 100%;
 
-.footer__container {
-  max-width: 1200px;
-}
-
-.footer__navbar__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .footer__logo {
-    display: flex;
-    justify-content: start;
-    width: 10%;
-    padding: 2rem;
+  @include media-query(640px) {
+    height: 150px;
   }
+}
 
-  .footer__navbar {
+
+  
+  
+  .footer__navbar__container {
     display: flex;
-    justify-content: start;
-    width: 100%;
-
-    ul {
+    justify-content: space-between;
+    align-items: center;
+    
+    .footer__logo {
       display: flex;
-
-      li {
-        color: variables.$text__color;
-        padding: 8px 15px;
-        font-size: 0.8rem;
-        cursor: pointer;
-
-        &:hover {
-          color: variables.$tertiary__color;
-        }
-      }
+      justify-content: start;
+      width: 10%;
+      padding: 2rem;
     }
-  }
 
-  .footer__lenguage {
-    display: flex;
-    justify-content: center;
-    width: 30%;
+  
   }
-}
+  
 
 .footer__social__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .footer__terms {
   display: flex;
-  flex-direction: column;
-  width: 50%;
-  padding: 2rem;
+  padding: 24px;
+  
+  @include media-query(640px) {
+    width: 50%;
+  }
+
   h3 {
     font-size: 0.8rem;
     margin: 1rem 0;
@@ -75,16 +66,24 @@
   }
 }
 .footer__social {
-  width: 30%;
+
+  padding: 10px;
+  @include media-query(640px) {
+    width: 50%;
+  }
 
   ul{
     display: flex;
 
     li {
       color: variables.$text__color;
-      padding: 8px 15px;
+      padding: 8px 14px;
       font-size: 0.7rem;
       cursor: pointer;
+
+      @include media-query(640px) {
+        padding: 0 7px;
+      }
 
       &:hover {
         color: variables.$tertiary__color;

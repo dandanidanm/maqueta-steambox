@@ -1,0 +1,140 @@
+@use "variables";
+
+@mixin media-query($media: 480px) {
+  @media screen and (max-width: $media) {
+    @content;
+  }
+}
+
+.how__work__container {
+
+  .how__work__title {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    padding: 24px;
+    @include media-query(640px) {
+      padding: 0;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      
+      @include media-query(640px) {
+      flex-direction: column;  
+      padding: 0;
+      }
+
+      h2 {
+        color: variables.$tertiary__color;
+        text-transform: uppercase;
+
+        @include media-query(640px) {
+          margin: 18px 0;
+        }
+      }
+
+      button {
+        padding: 8px 30px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        color: variables.$text__color;
+        border-radius: 8px;
+        border: none;
+        background-color: variables.$tertiary__color;
+        cursor: pointer;
+
+        &:hover {
+          background-color: variables.$contrast__color;
+        }
+      }
+    }
+
+    p {
+      color: variables.$text__color;
+      @include media-query(640px) {
+        padding: 24px;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .how__work__description {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+
+    .how__work__steps {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      @include media-query(640px) {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      div {
+        width: 50%;
+        margin: 20px 0;
+        @include media-query(640px) {
+          width: 100%;
+        }
+
+        h2 {
+          color: variables.$tertiary__color;
+
+          @include media-query(640px) {
+            font-size: 1.2rem;
+          }
+        }
+
+        p {
+        color: variables.$text__color;
+        @include media-query(640px) {
+          font-size: 0.8rem;
+        }
+
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .how__work__info {
+    
+    p {
+      color: variables.$text__color;
+      text-align: center;
+      padding: 24px;
+      
+      @include media-query(640px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .how__work__video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    iframe{
+
+      @include media-query(640px) {
+        margin: auto;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}

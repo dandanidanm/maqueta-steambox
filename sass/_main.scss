@@ -1,10 +1,17 @@
 @use "variables";
 
+@mixin media-query($media: 480px) {
+  @media screen and (max-width: $media) {
+    @content;
+  }
+}
+
 .main__hero__container {
   height: 100vh;
   background-image: url("../asset/portadacsgo_2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .main__hero__navbar {
@@ -43,19 +50,31 @@
 
 .main__hero__title {
   width: 60%;
+  @include media-query(640px) {
+    width: 100%;
+  }
   h1 {
     color: variables.$text__color;
     font-size: 3.5rem;
+    @include media-query(640px) {
+      font-size: 1.5rem;
+    }
   }
 
   h2 {
     color: variables.$contrast__color;
     font-size: 2rem;
+    @include media-query(640px) {
+      font-size: 1rem;
+    }
   }
 }
 
 .main__hero__button {
   button {
+    @include media-query(640px) {
+      font-size: 1rem;
+    }
     padding: 8px 30px;
     font-size: 1.5rem;
     font-weight: 600;
@@ -77,13 +96,57 @@
 .main__hero__log {
   position: relative;
   top: -10%;
-  left: 2.5%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 15vh;
+    width: 50%;
+    background-color: variables.$primary__color;
+    border-radius: 10px;
+    margin: 0 20px;
+    @include media-query(640px) {
+      margin: 0 5px;
+    }
+    p {
+      color: variables.$contrast__color;
+      padding: 0 15px;
+      font-size: 1.5rem;
+      text-align: center;
+
+      @include media-query(640px) {
+        font-size: 0.7rem;
+      }
+    }
+
+    span {
+      color: variables.$text__color;
+      @include media-query(640px) {
+        font-size: 0.6rem;
+        text-align: center;
+      }
+    }
+  }
+
   ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 95%;
     height: 15vh;
+
+    @include media-query(640px) {
+      font-size: 0.7rem;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
     li {
       color: variables.$contrast__color;
       padding: 8px 15px;
@@ -97,89 +160,133 @@
       margin: 0 1px;
       background-color: variables.$primary__color;
       border-radius: 10px;
+      @include media-query(640px) {
+        font-size: 0.7rem;
+        width: 32%;
+      }
 
       p {
         font-size: 1rem;
         color: variables.$tertiary__color;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
+
+        @include media-query(640px) {
+          font-size: 0.7rem;
+          margin-bottom: 5px;
+        }
       }
 
       span {
         color: variables.$text__color;
         font-size: 0.7rem;
+        @include media-query(640px) {
+          font-size: 0.5rem;
+        }
       }
     }
   }
 }
 
-.main__description {
-  height: 100%;
-}
-
 .main__description__app {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 1200px;
-  margin: 15vh auto 0;
+  margin: 10vh auto 0;
 
   h2 {
     color: variables.$contrast__color;
     font-size: 1.7rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
+    text-align: center;
+
+    @include media-query(640px) {
+      font-size: 1rem;
+      margin: 0;
+    }
   }
 
-  ul {
-    display: flex;
-    justify-content: space-between;
-
-    li {
+  .main__description__app__loading {
+    ul {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 33%;
+      justify-content: space-between;
+      margin: 0 24px;
 
-      .description__loading {
+      @include media-query(640px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      li {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 5px solid #c3c3c3;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+        width: 33%;
 
-        span {
-          font-size: 0.8rem;
-          color: variables.$text__color;
-          width: 60px;
-          height: 60px;
+        @include media-query(640px) {
+          width: 100%;
+        }
+
+        .description__loading {
           display: flex;
           justify-content: center;
           align-items: center;
+          border: 5px solid #c3c3c3;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+
+          @include media-query(640px) {
+            width: 50px;
+            height: 50px;
+          }
+
+          span {
+            font-size: 0.8rem;
+            color: variables.$text__color;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include media-query(640px) {
+              width: 50px;
+              height: 50px;
+              font-size: 0.5rem;
+            }
+          }
+        }
+
+        .loading-1 {
+          border-left: 5px solid variables.$tertiary__color;
+        }
+
+        .loading-2 {
+          border-bottom: 5px solid variables.$tertiary__color;
+        }
+
+        .loading-3 {
+          border-top: 5px solid variables.$tertiary__color;
+          border-right: 5px solid variables.$tertiary__color;
         }
       }
-
-      .loading-1 {
-        border-left: 5px solid variables.$tertiary__color;
-      }
-
-      .loading-2 {
-        border-bottom: 5px solid variables.$tertiary__color;
-      }
-
-      .loading-3 {
-        border-top: 5px solid variables.$tertiary__color;
-        border-right: 5px solid variables.$tertiary__color;
-      }
-
       .description__app {
         margin: 1rem;
+        @include media-query(640px) {
+          width: 90%;
+        }
         p {
           color: variables.$tertiary__color;
           font-size: 1.2rem;
+          @include media-query(640px) {
+            font-size: 0.8rem;
+          }
         }
         span {
           color: variables.$text__color;
+          @include media-query(640px) {
+            font-size: 0.8rem;
+            width: 20%;
+          }
         }
       }
     }
@@ -208,18 +315,26 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100vw;
 
   h2 {
     color: variables.$text__color;
     font-size: 1.7rem;
     margin: 2rem 0;
+    @include media-query(640px) {
+      font-size: 1rem;
+    }
   }
-  /* .video{
+  .video {
+    iframe{
 
-      border: 5px solid rgb(255, 136, 0);
-      animation: loader 2s ease-in-out infinite;
-    
-  } */
+      @include media-query(640px) {
+        margin: auto;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
 }
 
 .description__app__data {
@@ -227,12 +342,16 @@
   justify-content: center;
   align-items: center;
   margin: 15px;
+
   ul {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 95%;
-    height: 15vh;
+    align-items: space-between;
+    width: 100%;
+
+    @include media-query(640px) {
+      flex-wrap: wrap;
+    }
 
     li {
       color: variables.$contrast__color;
@@ -242,40 +361,57 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 100%;
       margin: 15px 5px;
       background-color: variables.$primary__color;
       border-radius: 10px;
+      width: 100%;
+
+      @include media-query(640px) {
+        width: 100%;
+        height: 70px;
+      }
 
       p {
         font-size: 1.5rem;
         color: variables.$contrast__color;
-        margin-bottom: 15px;
         font-weight: 600;
+        @include media-query(640px) {
+          font-size: 1rem;
+        }
       }
 
       span {
         color: variables.$text__color;
         font-size: 1rem;
+        @include media-query(640px) {
+          font-size: 0.8rem;
+          text-align: center;
+        }
       }
     }
   }
 }
 
 .description__app__info {
-  width: 1200px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 0 auto;
+  padding: 24px;
+
+  @include media-query(640px) {
+    flex-direction: column;
+  }
 }
 
 .description__segurity {
   border-radius: 20px;
-  width: 45%;
+  width: 48%;
   background-color: variables.$secundary__color;
-  height: 275px;
+
+  @include media-query(640px) {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
   h2 {
     color: variables.$text__color;
@@ -286,21 +422,34 @@
   .segurity__info {
     display: flex;
     justify-content: space-between;
-    align-items:center;
     margin-bottom: 1rem;
 
+    @include media-query(640px) {
+      flex-direction: column;
+    }
+
     div {
-      width: 30%;
+      @include media-query(640px) {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
       h3 {
         font-size: 0.9rem;
         margin: 1rem;
         color: variables.$contrast__color;
+
+        @include media-query(640px) {
+          margin: 0 1rem;
+        }
       }
 
       p {
         font-size: 0.8rem;
         margin: 1rem;
         color: variables.$text__color;
+        @include media-query(640px) {
+          margin: 0 1rem;
+        }
       }
 
       a {
@@ -313,41 +462,43 @@
 }
 
 .description__verify {
-  width: 45%;
+  width: 48%;
   display: flex;
   justify-content: space-between;
-  align-items:center;
   background-color: white;
-  height: 275px;
   border-radius: 20px;
+  @include media-query(640px) {
+    width: 100%;
+  }
 
   div {
     h3 {
-
-      margin: 1rem;
+      margin: 0.5rem;
       font-size: 2rem;
       color: variables.$tertiary__color;
+
+      @include media-query(640px) {
+        font-size: 1rem;
+      }
     }
 
     div {
-      margin: 1rem;
+      margin: 0.5rem;
 
       p {
         color: variables.$tertiary__color;
-
       }
     }
 
     span {
-      margin: 1rem;
+      margin: 0.5rem;
       font-size: 0.6rem;
       color: variables.$secundary__color;
     }
   }
-
 }
 
-.logo__verify{
+.logo__verify {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -357,4 +508,9 @@
 .star {
   width: 32px;
   height: 32px;
+
+  @include media-query(640px) {
+    width: 12px;
+    height: 12px;
+  }
 }

@@ -1,1 +1,44 @@
-@mixin 
+
+@mixin box-flex($justifyContent: center, $alignItems: center, $width: 100%, $height: 100%) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  width: $width;
+  height: $height;
+  @content
+}
+
+@mixin nav-link() {
+  li {
+    color: variables.$text__color;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    @content;
+
+    &:hover {
+      color: variables.$tertiary__color;
+    }
+  }
+}
+
+@mixin button () {
+  button {
+    padding: 8px 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    color: variables.$text__color;
+    border-radius: 8px;
+    border: none;
+    background-color: variables.$tertiary__color;
+    cursor: pointer;
+    margin-top: 2rem;
+
+    &:hover {
+      background-color: variables.$contrast__color;
+    }
+  }
+}
