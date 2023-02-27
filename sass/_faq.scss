@@ -1,0 +1,106 @@
+@use "variables";
+
+@mixin media-query($media: 480px) {
+  @media screen and (max-width: $media) {
+    @content;
+  }
+}
+
+.faq__container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  padding: 24px;
+  height: 100vh;
+
+  .faq__navbar {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    border-right:1px solid variables.$text__color ;
+    padding: 1rem;
+
+    label {
+      color: variables.$text__color;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      margin: 1rem  ;
+      
+      span {
+        color: variables.$tertiary__color;
+      }
+      &:hover {
+        color: variables.$tertiary__color;
+      }
+    }
+  }
+
+  .faq__description {
+    width: 60%;
+    position: relative;
+    padding: 1rem;
+
+
+    .article {
+      position: absolute;
+      transition: all 600ms ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.9);
+      padding: 24px;
+      margin: 1rem  ;
+      color: variables.$text__color;
+
+      h2{
+        color: variables.$tertiary__color;
+        margin: 1.2rem 0;
+      }
+      
+      p {
+        margin: 1rem 0;
+
+        span {
+          color: variables.$tertiary__color;
+        }
+      }
+    }
+  }
+}
+
+#faq_1,
+#faq_2,
+#faq_3,
+#faq_4,
+#faq_5,
+#faq_6,
+#faq_7,
+#faq_8,
+#faq_9,
+#faq_10,
+#faq_11,
+#faq_12 {
+  display: none;
+  
+  &:checked {
+    box-shadow: 0 0 0 3px orange;
+  }
+}
+
+#faq_1:checked ~ .faq__description__1,
+#faq_2:checked ~ .faq__description__2,
+#faq_3:checked ~ .faq__description__3,
+#faq_4:checked ~ .faq__description__4,
+#faq_5:checked ~ .faq__description__5,
+#faq_6:checked ~ .faq__description__6,
+#faq_7:checked ~ .faq__description__7,
+#faq_8:checked ~ .faq__description__8,
+#faq_9:checked ~ .faq__description__9,
+#faq_10:checked ~ .faq__description__10,
+#faq_11:checked ~ .faq__description__11,
+#faq_12:checked ~ .faq__description__12 {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1); 
+  
+}
