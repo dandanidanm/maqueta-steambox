@@ -580,7 +580,8 @@ body {
     bottom: 0;
     left: 0;
     background-color: #0B1C28;
-    z-index: 5;
+    z-index: 1000;
+    padding: 1rem;
   }
 }
 .header__nav__container .header__navbar ul {
@@ -835,21 +836,66 @@ body {
   justify-content: space-between;
   margin-bottom: 50px;
   padding: 24px;
-  height: 100vh;
+  height: 100%;
+}
+@media screen and (max-width: 640px) {
+  .faq__container {
+    position: relative;
+    min-height: 650px;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+  }
 }
 .faq__container .faq__navbar {
-  width: 40%;
+  width: 35%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ffffff;
   padding: 1rem;
+  transition: all 600ms ease;
+}
+@media screen and (max-width: 640px) {
+  .faq__container .faq__navbar {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+.faq__container .faq__navbar h1 {
+  color: #0DE5A0;
+  margin: 2rem 0;
+}
+@media screen and (max-width: 640px) {
+  .faq__container .faq__navbar h1 {
+    margin: 1rem 0 0;
+  }
+}
+.faq__container .faq__navbar ol li {
+  margin: 2rem 0;
+}
+@media screen and (max-width: 640px) {
+  .faq__container .faq__navbar ol li {
+    margin: 1rem 0;
+  }
 }
 .faq__container .faq__navbar label {
   color: #ffffff;
   cursor: pointer;
   text-transform: uppercase;
   font-size: 0.9rem;
-  margin: 1rem;
+  margin: 1rem 0;
+}
+@media screen and (max-width: 640px) {
+  .faq__container .faq__navbar label {
+    margin: 1rem 0;
+    font-size: 0.8rem;
+  }
 }
 .faq__container .faq__navbar label span {
   color: #0DE5A0;
@@ -858,26 +904,57 @@ body {
   color: #0DE5A0;
 }
 .faq__container .faq__description {
-  width: 60%;
+  height: 100%;
+  width: 65%;
   position: relative;
   padding: 1rem;
 }
+@media screen and (max-width: 640px) {
+  .faq__container .faq__description {
+    width: 100%;
+  }
+}
 .faq__container .faq__description .article {
   position: absolute;
+  top: 0;
   transition: all 600ms ease;
   opacity: 0;
   visibility: hidden;
   transform: scale(0.9);
-  padding: 24px;
   margin: 1rem;
   color: #ffffff;
+  width: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+@media screen and (max-width: 640px) {
+  .faq__container .faq__description .article {
+    position: absolute;
+    width: 80%;
+    left: 112%;
+    visibility: visible;
+    opacity: 1;
+  }
 }
 .faq__container .faq__description .article h2 {
   color: #0DE5A0;
   margin: 1.2rem 0;
 }
+@media screen and (max-width: 640px) {
+  .faq__container .faq__description .article h2 {
+    font-size: 1rem;
+    margin: 0.5rem 0 1rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .faq__container .faq__description .article h3 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+}
 .faq__container .faq__description .article p {
   margin: 1rem 0;
+  font-size: 0.8rem;
 }
 .faq__container .faq__description .article p span {
   color: #0DE5A0;
@@ -894,22 +971,9 @@ body {
 #faq_9,
 #faq_10,
 #faq_11,
-#faq_12 {
+#faq_12,
+#faq__menu-burger {
   display: none;
-}
-#faq_1:checked,
-#faq_2:checked,
-#faq_3:checked,
-#faq_4:checked,
-#faq_5:checked,
-#faq_6:checked,
-#faq_7:checked,
-#faq_8:checked,
-#faq_9:checked,
-#faq_10:checked,
-#faq_11:checked,
-#faq_12:checked {
-  box-shadow: 0 0 0 3px orange;
 }
 
 #faq_1:checked ~ .faq__description__1,
@@ -927,6 +991,43 @@ body {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
+}
+
+.faq__nav-img {
+  display: none;
+}
+@media screen and (max-width: 640px) {
+  .faq__nav-img {
+    display: block;
+    position: absolute;
+    left: 100%;
+    background-color: #1D2532;
+    margin: 1rem 0.5rem 0;
+    padding: 0;
+    transition: all 600ms ease;
+  }
+}
+
+.active {
+  color: #0DE5A0 !important;
+}
+
+@media screen and (max-width: 640px) {
+  .none {
+    left: -100% !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .none-0 {
+    left: 0% !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .none-12 {
+    left: 12% !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

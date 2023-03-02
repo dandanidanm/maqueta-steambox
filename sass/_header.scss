@@ -54,8 +54,8 @@
     bottom: 0;
     left: 0;
     background-color: variables.$primary__color;
-    z-index: 5;
-    
+    z-index: 1000;
+    padding: 1rem;
   }
 
   .header__navbar {
